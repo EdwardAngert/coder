@@ -3,17 +3,11 @@
 Coder is an open-source platform for creating and managing developer workspaces
 on your preferred clouds and servers.
 
-<p align="center">
-  <img src="./images/hero-image.png">
-</p>
+![Screenshots of Coder workspaces and connections](./images/hero-image.png)_Screenshots of Coder workspaces and connections_
 
 By building on top of common development interfaces (SSH) and infrastructure tools (Terraform), Coder aims to make the process of **provisioning** and **accessing** remote workspaces approachable for organizations of various sizes and stages of cloud-native maturity.
 
-<blockquote class="warning">
-  <p>
-  If you are a Coder v1 customer, view <a href="https://coder.com/docs/coder">the docs</a> or <a href="https://coder.com/docs/coder/latest/guides/v2-faq">the sunset plans</a>.
-  </p>
-</blockquote>
+> If you are a Coder v1 customer, view [the v1 documentation](https://coder.com/docs/v1) or [the sunset plans](https://coder.com/docs/v1/guides/v2-faq).
 
 ## How it works
 
@@ -21,22 +15,18 @@ Coder workspaces are represented with Terraform, but no Terraform knowledge is
 required to get started. We have a database of pre-made templates built into the
 product.
 
-<p align="center">
-  <img src="./images/providers-compute.png">
-</p>
+![Providers and compute environments](./images/providers-compute.png)_Providers and compute environments_
 
 Coder workspaces don't stop at compute. You can add storage buckets, secrets, sidecars
 and whatever else Terraform lets you dream up.
 
-[Learn more about managing infrastructure.](./templates/index.md)
+[Learn more about managing infrastructure](./templates/index.md).
 
 ## IDE Support
 
 You can use any Web IDE ([code-server](https://github.com/coder/code-server), [projector](https://github.com/JetBrains/projector-server), [Jupyter](https://jupyter.org/), etc.), [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/), [VS Code Remote](https://code.visualstudio.com/docs/remote/ssh-tutorial) or even a file sync such as [mutagen](https://mutagen.io/).
 
-<p align="center">
-  <img src="./images/ide-icons.svg" height=72>
-</p>
+![IDE icons](./images/ide-icons.svg)
 
 ## Why remote development
 
