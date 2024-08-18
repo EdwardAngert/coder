@@ -73,6 +73,15 @@ This additional layer allows admins to:
 - Enable persistent workspaces, which are like local machines, but faster and
   hosted by a cloud service.
 
+## How much does it cost?
+
+Coder is free and open source under
+[GNU Affero General Public License v3.0](https://github.com/coder/coder/blob/main/LICENSE).
+All developer productivity features are included in the Open Source version of
+Coder.
+An [Enterprise license is available](https://coder.com/pricing) for enhanced
+support options and custom deployments.
+
 ## How does Coder work
 
 Coder workspaces are represented with Terraform, but you don't need to know
