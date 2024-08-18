@@ -1,96 +1,115 @@
-# About Coder
+# What is Coder
 
-Coder is an open-source platform for creating and managing developer workspaces
-on your preferred clouds and servers.
+Coder is a self-hosted, open source, cloud development environment that works
+with any cloud, IDE, OS, Git provider, and IDP.
 
 ![Screenshots of Coder workspaces and connections](./images/hero-image.png)_Screenshots of Coder workspaces and connections_
 
-By building on top of common development interfaces (SSH) and infrastructure tools (Terraform), Coder aims to make the process of **provisioning** and **accessing** remote workspaces approachable for organizations of various sizes and stages of cloud-native maturity.
+By building on top of common development interfaces and infrastructure tools,
+Coder aims to make the process of provisioning and accessing remote workspaces
+approachable for organizations of various sizes and stages of cloud-native
+maturity.
 
-> If you are a Coder v1 customer, view [the v1 documentation](https://coder.com/docs/v1) or [the sunset plans](https://coder.com/docs/v1/guides/v2-faq).
+> **Using Coder v1?**
+>
+> If you're a Coder v1 customer, view [the v1 documentation](https://coder.com/docs/v1)
+or [the v2 migration guide and FAQ](https://coder.com/docs/v1/guides/v2-faq).
 
-## How it works
+## IDE support
 
-Coder workspaces are represented with Terraform, but no Terraform knowledge is
-required to get started. We have a [database](https://registry.coder.com/templates) of pre-made templates built into the
-product.
-
-![Providers and compute environments](./images/providers-compute.png)_Providers and compute environments_
-
-Coder workspaces don't stop at compute. You can add storage buckets, secrets, sidecars
-and whatever else Terraform lets you dream up.
-
-[Learn more about templates.](./admin/templates/README.md).
-
-## IDE Support
-
-You can use any [Web IDE](./admin/templates/extending-templates/web-ides.md) ([code-server](https://github.com/coder/code-server), [projector](https://github.com/JetBrains/projector-server), [Jupyter](https://jupyter.org), etc.), [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/), [VS Code Remote](https://code.visualstudio.com/docs/remote/ssh-tutorial) or even a file sync such as [mutagen](https://mutagen.io/).
+You can use any Web IDE, such as the built-in
+[code-server](https://github.com/coder/code-server),
+[JetBrains Projector](https://github.com/JetBrains/projector-server),
+[Jupyter](https://jupyter.org/), and others.
+Use your existing remote development environments like
+[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/) and
+[VS Code Remote](https://code.visualstudio.com/docs/remote/ssh-tutorial).
+Or use a file sync such as [mutagen](https://mutagen.io/).
 
 ![IDE icons](./images/ide-icons.svg)
 
 ## Why remote development
 
-Migrating from local developer machines to workspaces hosted by cloud services
-is an [increasingly common solution for
-developers](https://blog.alexellis.io/the-internet-is-my-computer/) and
-[organizations
-alike](https://slack.engineering/development-environments-at-slack). There are
-several benefits, including:
+Remote development offers several benefits for users and administrators, including:
 
-- **Increased speed:** Server-grade compute speeds up operations in software
-  development, such as IDE loading, code compilation and building, and the
-  running of large workloads (such as those for monolith or microservice
-  applications)
+- **Increased speed**
+  - Server-grade compute speeds up operations in software development, from
+  loading the IDE to compiling and building code, and running large workloads
+  such as those for monolith or microservice applications.
 
-- **Easier environment management:** Tools such as Terraform, nix, Docker,
-  devcontainers, and so on make developer onboarding and the troubleshooting of
-  development environments easier
+- **Easier environment management**
+  - Built-in infrastructure tools such as Terraform, nix, Docker, dev containers, and others make it easier to onboard developers with consistent environments.
 
-- **Increase security:** Centralize source code and other data onto private
-  servers or cloud services instead of local developer machines
+- **Increased security**
+  - Centralize source code and other data onto private servers or cloud services instead of local developer machines.
+  - Provision and manage users with [SSO](https://coder.com/docs/admin/auth) and [Role-based access controlled (RBAC)](https://coder.com/docs/admin/rbac).
 
-- **Improved compatibility:** Remote workspaces share infrastructure
-  configuration with other development, staging, and production environments,
-  reducing configuration drift
+- **Improved compatibility**
+  - Remote workspaces can share infrastructure configurations with other
+  development, staging, and production environments, reducing configuration
+  drift.
 
-- **Improved accessibility:** Devices such as lightweight notebooks,
-  Chromebooks, and iPads can connect to remote workspaces via browser-based IDEs
-  or remote IDE extensions
+- **Improved accessibility**
+  - Connect to remote workspaces via browser-based IDEs or remote IDE
+  extensions to enable developers regardless of the device they use, whether
+  it's a lightweight laptop, Chromebook, or iPad.
+
+Read more about why organizations and engineers are moving to remote
+development on [our blog](https://coder.com/blog), the
+[Slack engineering blog](https://slack.engineering/development-environments-at-slack),
+or from [OpenFaaS's Alex Ellis](https://blog.alexellis.io/the-internet-is-my-computer/).
 
 ## Why Coder
 
-The key difference between Coder OSS and other remote IDE platforms is the added
-layer of infrastructure control. This additional layer allows admins to:
+The key difference between Coder and other remote IDE platforms is the added
+layer of infrastructure control.
+This additional layer allows admins to:
 
-- Support ARM, Windows, Linux, and macOS workspaces
-- Modify pod/container specs (e.g., adding disks, managing network policies,
-  setting/updating environment variables)
-- Use VM/dedicated workspaces, developing with Kernel features (no container
-  knowledge required)
+- Simultaneously support ARM, Windows, Linux, and macOS workspaces.
+- Modify pod/container specs, such as adding disks, managing network policies, or
+  setting/updating environment variables.
+- Use VM or dedicated workspaces, developing with Kernel features (no container
+  knowledge required).
 - Enable persistent workspaces, which are like local machines, but faster and
-  hosted by a cloud service
+  hosted by a cloud service.
 
-Coder includes [production-ready templates](https://registry.coder.com/templates) for use with AWS EC2,
-Azure, Google Cloud, Kubernetes, and more.
+## How does Coder work
 
-## What Coder is _not_
+Coder workspaces are represented with Terraform, but you don't need to know
+Terraform to get started.
+We have a [database of production-ready templates](https://registry.coder.com/templates)
+for use with AWS EC2, Azure, Google Cloud, Kubernetes, and more.
 
-- Coder is not an infrastructure as code (IaC) platform. Terraform is the first
-  IaC _provisioner_ in Coder, allowing Coder admins to define Terraform
-  resources as Coder workspaces.
+![Providers and compute environments](./images/providers-compute.png)_Providers and compute environments_
 
-- Coder is not a DevOps/CI platform. Coder workspaces can follow best practices
-  for cloud service-based workloads, but Coder is not responsible for how you
+Coder workspaces can be used for more than just compute.
+You can use Terraform to add storage buckets, secrets, sidecars,
+[and more](https://developer.hashicorp.com/terraform/tutorials).
+
+Visit the [templates documentation](./templates/index.md) to learn more.
+
+## What Coder is not
+
+- Coder is not an infrastructure as code (IaC) platform.
+  - Terraform is the first IaC _provisioner_ in Coder, allowing Coder admins to
+  define Terraform resources as Coder workspaces.
+
+- Coder is not a DevOps/CI platform.
+  - Coder workspaces can be configured to follow best practices for
+  cloud-service-based workloads, but Coder is not responsible for how you
   define or deploy the software you write.
 
-- Coder is not an online IDE. Instead, Coder supports common editors, such as VS
-  Code, vim, and JetBrains, over HTTPS or SSH.
+- Coder is not an online IDE.
+  - Coder supports common editors, such as VS Code, vim, and JetBrains,
+  all over HTTPS or SSH.
 
-- Coder is not a collaboration platform. You can use git and dedicated IDE
+- Coder is not a collaboration platform.
+  - You can use Git with your favorite Git platform and dedicated IDE
   extensions for pull requests, code reviews, and pair programming.
 
-- Coder is not a SaaS/fully-managed offering. You must host
-  Coder on a cloud service (AWS, Azure, GCP) or your private data center.
+- Coder is not a SaaS/fully-managed offering.
+  - You must host Coder on a cloud service, such as AWS, Azure, or GCP, on a
+  private data center, or on your own network.
 
 ## Up next
 
