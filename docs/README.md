@@ -38,7 +38,7 @@ Remote development offers several benefits for users and administrators, includi
   such as those for monolith or microservice applications.
 
 - **Easier environment management**
-  - Built-in infrastructure tools such as Terraform, nix, Docker, dev containers, and others make it easier to onboard developers with consistent environments.
+  - Built-in infrastructure tools such as Terraform, nix, Docker, Dev Containers, and others make it easier to onboard developers with consistent environments.
 
 - **Increased security**
   - Centralize source code and other data onto private servers or cloud services instead of local developer machines.

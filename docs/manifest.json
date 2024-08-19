@@ -1294,6 +1294,11 @@
 					"title": "Using Organizations",
 					"description": "Learn how to use our (early access) Organizations functionality",
 					"path": "./guides/using-organizations.md"
+				},
+				{
+					"title": "Quick start: Get started with Coder",
+					"description": "Integrate Coder with JFrog Xray",
+					"path": "./guides/xray-integration.md"
 				}
 			]
 		}
