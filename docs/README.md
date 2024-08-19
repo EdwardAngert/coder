@@ -5,10 +5,9 @@ with any cloud, IDE, OS, Git provider, and IDP.
 
 ![Screenshots of Coder workspaces and connections](./images/hero-image.png)_Screenshots of Coder workspaces and connections_
 
-By building on top of common development interfaces and infrastructure tools,
-Coder aims to make the process of provisioning and accessing remote workspaces
-approachable for organizations of various sizes and stages of cloud-native
-maturity.
+Coder is built on common development interfaces and infrastructure tools to
+make the process of provisioning and accessing remote workspaces approachable
+for organizations of various sizes and stages of cloud-native maturity.
 
 > **Using Coder v1?**
 >
@@ -17,23 +16,29 @@ or [the v2 migration guide and FAQ](https://coder.com/docs/v1/guides/v2-faq).
 
 ## IDE support
 
-You can use any Web IDE, such as the built-in
-[code-server](https://github.com/coder/code-server),
-[JetBrains Projector](https://github.com/JetBrains/projector-server),
-[Jupyter](https://jupyter.org/), and others.
-Use your existing remote development environments like
-[JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/) and
-[VS Code Remote](https://code.visualstudio.com/docs/remote/ssh-tutorial).
-Or use a file sync such as [mutagen](https://mutagen.io/).
-
 ![IDE icons](./images/ide-icons.svg)
+
+You can use:
+
+- Any Web IDE, such as
+  - The built-in [VS Code code-server](https://github.com/coder/code-server)
+  - [JetBrains Projector](https://github.com/JetBrains/projector-server)
+  - [Jupyter](https://jupyter.org/)
+  - And others
+
+- Your existing remote development environment:
+  - [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/)
+  - [VS Code Remote](https://code.visualstudio.com/docs/remote/ssh-tutorial)
+  - [Emacs](./ides/emacs-tramp)
+
+- File sync such as [Mutagen](https://mutagen.io/)
 
 ## Why remote development
 
 Remote development offers several benefits for users and administrators, including:
 
 - **Increased speed**
-  - Server-grade compute speeds up operations in software development, from
+  - Server-grade cloud hardware speeds up operations in software development, from
   loading the IDE to compiling and building code, and running large workloads
   such as those for monolith or microservice applications.
 
@@ -41,7 +46,7 @@ Remote development offers several benefits for users and administrators, includi
   - Built-in infrastructure tools such as Terraform, nix, Docker, Dev Containers, and others make it easier to onboard developers with consistent environments.
 
 - **Increased security**
-  - Centralize source code and other data onto private servers or cloud services instead of local developer machines.
+  - Centralize source code and other data onto private servers or cloud services instead of local developers' machines.
   - Provision and manage users with [SSO](https://coder.com/docs/admin/auth) and [Role-based access controlled (RBAC)](https://coder.com/docs/admin/rbac).
 
 - **Improved compatibility**
@@ -52,7 +57,7 @@ Remote development offers several benefits for users and administrators, includi
 - **Improved accessibility**
   - Connect to remote workspaces via browser-based IDEs or remote IDE
   extensions to enable developers regardless of the device they use, whether
-  it's a lightweight laptop, Chromebook, or iPad.
+  it's their main device, a lightweight laptop, Chromebook, or iPad.
 
 Read more about why organizations and engineers are moving to remote
 development on [our blog](https://coder.com/blog), the
@@ -117,10 +122,12 @@ Visit the [templates documentation](./templates/index.md) to learn more.
   extensions for pull requests, code reviews, and pair programming.
 
 - Coder is not a SaaS/fully-managed offering.
-  - You must host Coder on a cloud service, such as AWS, Azure, or GCP, on a
-  private data center, or on your own network.
+  - Coder is a [self-hosted](https://en.wikipedia.org/wiki/Self-hosting_(web_services))
+  solution.
+  You must host Coder in a private data center or on a cloud service, such as
+  AWS, Azure, or GCP.
 
 ## Up next
 
-- [Install Coder](./install/index.md#install-coder)
+- [Get started](./guides/quickstart.md)
 - Learn about [Templates](./templates/index.md)

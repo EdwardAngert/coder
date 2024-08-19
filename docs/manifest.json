@@ -1297,8 +1297,8 @@
 				},
 				{
 					"title": "Quick start: Get started with Coder",
-					"description": "Integrate Coder with JFrog Xray",
-					"path": "./guides/xray-integration.md"
+					"description": "Everything you need to set up and try Coder",
+					"path": "./guides/quickstart.md"
 				}
 			]
 		}
