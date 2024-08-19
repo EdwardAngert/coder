@@ -11,19 +11,18 @@ August 18, 2024
 
 ---
 
-Follow the steps in this guide to install Coder on a machine on a local network,
-set up a workspace, and connect to it from VS Code.
+Follow the steps in this guide to install Coder locally or on a device on your
+network, set up a workspace, and connect to it from VS Code.
 
 By the end of this guide, you'll have a remote development environment that you
-can connect to from any device on your network, so you can work on the same
-files in a persistent environment from your main device, a tablet, or your
-phone.
+can connect to from any device anywhere, so you can work on the same files in a
+persistent environment from your main device, a tablet, or your phone.
 
 ## Install and start Coder
 
 <div class="tabs">
 
-### Linux/macOS
+## Linux/macOS
 
 1. Install Docker:
 
@@ -46,7 +45,7 @@ phone.
    methods, refer to the
    [latest release on GitHub](https://github.com/coder/coder/releases/latest).
 
-### Windows
+## Windows
 
 > **Important:** If you plan to use the built-in PostgreSQL database,
 > ensure that the
@@ -85,7 +84,7 @@ from the [GitHub repository assets](https://github.com/coder/coder/releases/late
 
    If your Coder server is on a network or cloud device, locate the message in
    your terminal that reads, `View the Web UI: https://<CUSTOM-STRING>.<TUNNEL>.try.coder.app`.
-   The server begins to stream logs immediately, you might have to scroll up to find it.
+   The server begins to stream logs immediately and you might have to scroll up to find it.
 
 1. On the **Welcome to Coder** page, enter the information to create an admin
 user, then select **Create account**.
@@ -114,62 +113,60 @@ in command-line calls.
 
    ![getting-started-workspace is running](../images/guides/quickstart/workspace-running-with-topbar.png)_getting-started-workspace is running_
 
-## Connect to Coder from VS Code
+1. Select **VS Code Desktop** to install the Coder extension and connect to
+   your Coder workspace.
 
-Select **VS Code Desktop** to install the Coder extension and connect to your
-Coder workspace.
+   <details><summary>Connect via SSH in VSCodium</summary>
 
-<details><summary>Connect via SSH in VSCodium</summary>
+   VSCodium doesn't use the Microsoft VS Code extension marketplace or application
+   calls.
+   Enable SSH connections to the Coder workspace Docker container and connect to
+   it from VSCodium with the **Remote - SSH** extension.
 
-VSCodium doesn't use the Microsoft VS Code extension marketplace or application
-calls.
-Enable SSH connections to the Coder workspace Docker container and connect to
-it from VSCodium with the **Remote - SSH** extension.
+   1. In the workspace, select **Connect via SSH**.
 
-1. In the workspace, select **Connect via SSH**.
+   1. Select the `ssh` command below **Connect to the agent** to copy the command.
 
-1. Select the `ssh` command below **Connect to the agent** to copy the command.
+   1. Open a terminal window on the Coder server (or SSH to it if it's a device on your network).
 
-1. Open a terminal window on the Coder server (or SSH to it if it's a device on your network).
+   1. Run the `ssh` command to connect to the agent. Replace `your-workspace-name` in this example:
 
-1. Run the `ssh` command to connect to the agent. Replace `your-workspace-name` in this example:
+      ```bash
+      ssh coder.your-workspace-name.main
+      ```
 
-   ```bash
-   ssh coder.your-workspace-name.main
-   ```
+   1. Use the Web UI URL from [Configure Coder with a new workspace](#configure-coder-with-a-new-workspace) to log in and authenticate:
 
-1. Use the Web UI URL from [Configure Coder with a new workspace](#configure-coder-with-a-new-workspace) to log in and authenticate:
+      ```bash
+      coder login https://<CUSTOM-STRING>.<TUNNEL>.try.coder.app
+      ```
 
-   ```bash
-   coder login https://<CUSTOM-STRING>.<TUNNEL>.try.coder.app
-   ```
+   1. Copy the session token, then paste it in the SSH session in the terminal.
 
-1. Copy the session token, then paste it in the SSH session in the terminal.
+      Note that, for security purposes, no characters will appear on the screen
+      when you paste the token:
 
-   Note that, for security purposes, no characters will appear on the screen
-   when you paste the token:
+      ```plaintext
+      > Paste your token here:
+      > Welcome to Coder, user! You're authenticated.
+      ```
 
-   ```plaintext
-   > Paste your token here:
-   > Welcome to Coder, user! You're authenticated.
-   ```
+   1. Run the Coder SSH configuration and enter `yes` to continue:
 
-1. Run the Coder SSH configuration and enter `yes` to continue:
+      ```console
+      $ coder config-ssh
+      Continue? (yes/no) yes
+      ```
 
-   ```console
-   $ coder config-ssh
-   Continue? (yes/no) yes
-   ```
+   1. Install the [Remote - SSH extension](https://open-vsx.org/extension/jeanp413/open-remote-ssh).
 
-1. Install the [Remote - SSH extension](https://open-vsx.org/extension/jeanp413/open-remote-ssh).
+   1. Select **Remote-SSH: Connect to host** from the command palette.
 
-1. Select **Remote-SSH: Connect to host** from the command palette.
+   1. Enter the SSH host:
 
-1. Enter the SSH host:
+   1. Enter your password:
 
-1. Enter your password:
-
-</details>
+   </details>
 
 ## Work on some code
 
@@ -245,6 +242,6 @@ non-privileged user:
    - Ubuntu users might not see the group membership update. In that case, run
    the following command or reboot the machine:
 
-   ```shell
-   newgrp docker
-   ```
+      ```shell
+      newgrp docker
+      ```
