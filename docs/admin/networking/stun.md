@@ -4,6 +4,13 @@
 is a protocol used to assist applications in establishing peer-to-peer
 communications across Network Address Translations (NATs) or firewalls.
 
+> [!NOTE]
+> This page covers STUN and NAT traversal in depth. For how STUN fits into
+> the rest of Coder's networking stack, see
+> [Establishing Connections](./establishing-connections.md). STUN requires
+> outbound internet access by default; for air-gapped deployments, see
+> [Air-gapped and offline deployments](./establishing-connections.md#air-gapped-and-offline-deployments).
+
 [Network Address Translation (NAT)](https://en.wikipedia.org/wiki/Network_address_translation)
 is commonly used in private networks to allow multiple devices to share a
 single public IP address. The vast majority of home and corporate internet

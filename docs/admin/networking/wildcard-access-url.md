@@ -36,6 +36,9 @@ Wildcard access URLs require a TLS certificate that covers the wildcard domain. 
 > [!TIP]
 > You can use a single certificate for both the access URL and wildcard access URL. The certificate CN or SANs must match the wildcard domain, such as `*.coder.example.com`.
 
+> [!NOTE]
+> For air-gapped deployments, the [Let's Encrypt reverse proxy option](#reverse-proxy-with-lets-encrypt) below requires outbound internet access and isn't available. Use [Direct TLS Configuration](#direct-tls-configuration) with a certificate issued by your internal CA instead. See [Air-gapped Deployments](../../install/airgap.md).
+
 #### Direct TLS Configuration
 
 Configure Coder to handle TLS directly using the wildcard certificate:

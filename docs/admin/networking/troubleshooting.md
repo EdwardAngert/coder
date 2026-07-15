@@ -1,5 +1,9 @@
 # Troubleshooting
 
+> [!NOTE]
+> For an overview of how direct and relayed connections are established, see
+> [Establishing Connections](./establishing-connections.md).
+
 `coder ping <workspace>` will ping the workspace agent and print diagnostics on
 the state of the connection. These diagnostics are created by inspecting both
 the client and agent network configurations, and provide insights into why a
@@ -115,6 +119,21 @@ will not be affected by the low MTU.
 To disable direct connections, set the
 [`--block-direct-connections`](../../reference/cli/server.md#--block-direct-connections)
 flag or `CODER_BLOCK_DIRECT` environment variable on the Coder server.
+
+## Common Problems with Relayed Connections
+
+If a connection stays relayed but is slow, failing, or `coder ping` reports
+no DERP region at all, the problem is usually with the DERP server itself
+rather than the individual connection. Check the
+[DERP section of the health check](../monitoring/health-check.md#derp) for
+deployment-wide diagnostics, including load balancers that strip the
+`Upgrade: derp` header, unhealthy DERP nodes, and deployments with no DERP
+servers configured.
+
+## Auditing Connections
+
+To see who connected to a workspace, when, and how (SSH, workspace apps,
+port forwarding), see [Connection Logs](../monitoring/connection-logs.md).
 
 ## Throughput
 

@@ -16,7 +16,9 @@ networking logic.
 
 ## Requirements
 
-In order for clients and workspaces to be able to connect:
+For a complete port-by-port table of what each component needs, see
+[Network Requirements](./requirements.md). In order for clients and
+workspaces to be able to connect:
 
 > [!NOTE]
 > We strongly recommend that clients connect to Coder and their
@@ -259,5 +261,8 @@ By default, Coder will access some external network endpoints in order to downlo
 
 ## Up next
 
+- Learn about [Network Requirements](./requirements.md)
+- Learn about [Establishing Connections](./establishing-connections.md)
+- Learn about [Coder Connect](./coder-connect.md)
 - Learn about [Port Forwarding](./port-forwarding.md)
 - Troubleshoot [Networking Issues](./troubleshooting.md)

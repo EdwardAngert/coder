@@ -14,6 +14,17 @@ connecting with their workspace over SSH, a workspace app, port forwarding, etc.
 Dashboard connections and API calls (e.g. the workspaces list) are not served
 over workspace proxies.
 
+> [!NOTE]
+> STUN is configured centrally on the primary coderd; workspace proxies
+> don't run their own STUN discovery. Each proxy does run its own embedded
+> DERP server (`--derp-server-enable`, on by default) and can set its own
+> `CODER_BLOCK_DIRECT` if you need to force relayed-only connections
+> through that proxy specifically. For air-gapped deployments, disable
+> STUN on the primary as described in
+> [Air-gapped and offline deployments](./establishing-connections.md#air-gapped-and-offline-deployments);
+> proxies otherwise only need network connectivity to the primary (see
+> [Network Requirements](./requirements.md)).
+
 ## Deploy a workspace proxy
 
 Each workspace proxy should be a unique instance. At no point should two
@@ -227,3 +238,8 @@ The Prometheus endpoint address is `http://localhost:2112/` by default. You can
 use either the environment variable `CODER_PROMETHEUS_ADDRESS` or the flag
 `--prometheus-address <network-interface>:<port>` to select a different listen
 address.
+
+Each workspace proxy runs its own embedded DERP server and exports the same
+`coder_derp_server_*` metrics that the primary Coder server does. See the
+[available metrics reference](../integrations/prometheus.md#available-metrics)
+for the full list.

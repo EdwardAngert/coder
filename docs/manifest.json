@@ -885,6 +885,21 @@
 					"icon_path": "./images/icons/networking.svg",
 					"children": [
 						{
+							"title": "Network Requirements",
+							"description": "Ports and protocols required for each Coder component",
+							"path": "./admin/networking/requirements.md"
+						},
+						{
+							"title": "Establishing Connections",
+							"description": "How WireGuard, the coordinator, STUN, and DERP work together to connect a client to a workspace",
+							"path": "./admin/networking/establishing-connections.md"
+						},
+						{
+							"title": "Coder Connect",
+							"description": "How Coder Desktop's VPN tunnel fits into Coder's networking model",
+							"path": "./admin/networking/coder-connect.md"
+						},
+						{
 							"title": "Port Forwarding",
 							"description": "Learn how to forward ports in Coder",
 							"path": "./admin/networking/port-forwarding.md"
