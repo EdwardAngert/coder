@@ -13,7 +13,7 @@ deploy. For a conceptual overview of how connections are established, see
 > deployment. See [Air-gapped Deployments](../../install/airgap.md) for the
 > full air-gapped configuration.
 
-## Summary
+## Port and protocol summary
 
 | Component                    | Direction | Port / protocol                            | Required?                                   |
 |-------------------------------|-----------|---------------------------------------------|----------------------------------------------|
@@ -66,7 +66,7 @@ specifically for Coder, since it uses NAT traversal; see
 is blocked, connections fall back to a relayed (DERP) connection over the
 same `443` HTTPS/WebSocket path used for everything else.
 
-## Provisioners
+## External provisioners
 
 External provisioners behave like clients on the network: they only need
 outbound access to the Coder access URL over `443`. No inbound ports are

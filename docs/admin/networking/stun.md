@@ -9,7 +9,7 @@ communications across Network Address Translations (NATs) or firewalls.
 > the rest of Coder's networking stack, see
 > [Establishing Connections](./establishing-connections.md). STUN requires
 > outbound internet access by default; for air-gapped deployments, see
-> [Air-gapped and offline deployments](./establishing-connections.md#air-gapped-and-offline-deployments).
+> [Air-gapped deployments](./establishing-connections.md#air-gapped-deployments).
 
 [Network Address Translation (NAT)](https://en.wikipedia.org/wiki/Network_address_translation)
 is commonly used in private networks to allow multiple devices to share a

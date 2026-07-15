@@ -40,7 +40,7 @@ Every workspace agent gets a hostname under the fixed `.coder` suffix:
 - `<workspace>.coder`, a shorthand that exists only when the workspace has
   exactly one agent
 
-## Addressing
+## IPv6 addressing
 
 Each workspace agent reachable through Coder Connect is assigned an IPv6
 address from a Coder-owned unique local address (ULA) range,
@@ -54,11 +54,11 @@ for. It's relevant on the client side: if endpoint security software or an
 EDR agent inspects or filters traffic on the VPN network extension, allow
 destinations in `fd60:627a:a42b::/48` so Coder Connect isn't blocked.
 
-## Air-gapped and offline deployments
+## Air-gapped deployments
 
 Coder Connect's tunnel works the same way in an air-gapped deployment as
 described in
-[Establishing Connections](./establishing-connections.md#air-gapped-and-offline-deployments):
+[Establishing Connections](./establishing-connections.md#air-gapped-deployments):
 it uses whatever DERP and STUN configuration your deployment has, including
 a fully relayed-only setup with STUN disabled.
 

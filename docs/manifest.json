@@ -906,12 +906,12 @@
 						},
 						{
 							"title": "STUN and NAT",
-							"description": "Learn how to forward ports in Coder",
+							"description": "Learn how Coder uses STUN for NAT traversal to establish direct connections",
 							"path": "./admin/networking/stun.md"
 						},
 						{
 							"title": "Workspace Proxies",
-							"description": "Run geo distributed workspace proxies",
+							"description": "Run geo-distributed workspace proxies",
 							"path": "./admin/networking/workspace-proxies.md",
 							"state": ["premium"]
 						},

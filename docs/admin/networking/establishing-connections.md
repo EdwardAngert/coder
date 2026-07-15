@@ -5,7 +5,7 @@ client connected to a workspace. It's a systems-level walkthrough, not a
 protocol reference: for STUN internals, see [STUN and NAT](./stun.md), and
 for DERP relay configuration, see [Networking](./index.md#relayed-connections).
 
-## The pieces
+## Networking stack building blocks
 
 Coder establishes connections with an embedded version of
 [Tailscale](https://tailscale.com)'s open source data plane. Four pieces
@@ -15,7 +15,7 @@ work together:
   traffic between a client and a workspace agent, whether that tunnel ends
   up direct or relayed. Every agent and client is assigned an address
   inside this tunnel from a Coder-owned IPv6 range; see
-  [Coder Connect](./coder-connect.md#addressing) for details on that
+  [Coder Connect](./coder-connect.md#ipv6-addressing) for details on that
   addressing when using Coder Desktop.
 - **The coordinator**: runs inside coderd and exchanges WireGuard node keys
   and endpoint information between a client and an agent, so each side
@@ -28,7 +28,7 @@ work together:
   established. coderd (and any [workspace proxy](./workspace-proxies.md))
   runs an embedded DERP server.
 
-## Topology
+## Network topology
 
 Both the client and the workspace agent connect outbound to coderd's access
 URL over an authenticated HTTPS/WebSocket session on `443`. Neither side
@@ -100,7 +100,7 @@ Because every session, whether SSH or browser, is authenticated through
 coderd, admins can audit who connected to a workspace and how; see
 [Connection Logs](../monitoring/connection-logs.md).
 
-## Geo-distribution and workspace proxies
+## Latency and infrastructure placement
 
 Placing infrastructure closer together reduces the number of network hops
 in the path above. Two rules of thumb:
@@ -121,7 +121,7 @@ See [Workspace Proxies](./workspace-proxies.md) for deployment details and
 [Networking](./index.md#latency) for how Coder measures and reports
 latency.
 
-## Air-gapped and offline deployments
+## Air-gapped deployments
 
 Every piece in this model works without outbound internet access. The
 coordinator, STUN, and DERP all run inside your deployment (coderd and any

@@ -21,7 +21,7 @@ over workspace proxies.
 > `CODER_BLOCK_DIRECT` if you need to force relayed-only connections
 > through that proxy specifically. For air-gapped deployments, disable
 > STUN on the primary as described in
-> [Air-gapped and offline deployments](./establishing-connections.md#air-gapped-and-offline-deployments);
+> [Air-gapped deployments](./establishing-connections.md#air-gapped-deployments);
 > proxies otherwise only need network connectivity to the primary (see
 > [Network Requirements](./requirements.md)).
 
