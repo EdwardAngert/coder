@@ -69,7 +69,7 @@ In order for clients to be able to establish direct connections:
     ephemeral (high) ports. If a firewall between the client and the agent
     blocks this UDP traffic, direct connections will not be possible.
 
-## Coder Server
+## Coder server
 
 Workspaces connect to the Coder server via the server's external address, set
 via [`ACCESS_URL`](../../admin/setup/index.md#access-url). There must not be a
@@ -91,7 +91,7 @@ provider "coder" {
 This is useful when debugging connectivity issues between the workspace agent
 and the Coder server.
 
-## Web Apps
+## Web apps
 
 The Coder server relays dashboard-initiated connections between the user and
 the workspace. Web terminal <-> workspace connections are an exception and may
@@ -100,7 +100,7 @@ be direct.
 In general, [port forwarded](./port-forwarding.md) web apps are faster than
 dashboard-accessed web apps.
 
-## 🌎 Geo-distribution
+## Geo-distribution
 
 ### Direct connections
 
@@ -132,7 +132,7 @@ You can launch `coder server` with Tailscale's DERPs like so:
 coder server --derp-config-url https://controlplane.tailscale.com/derpmap/default
 ```
 
-#### Custom Relays
+#### Custom relays
 
 If you want lower latency than what Tailscale offers or want additional DERP
 relays for air-gapped deployments, you may run custom DERP servers. Refer to
@@ -186,7 +186,7 @@ With browser-only connections, developers can only connect to their workspaces
 via the web terminal and
 [web IDEs](../../user-guides/workspace-access/web-ides.md).
 
-### Workspace Proxies
+### Workspace proxies
 
 > [!NOTE]
 > Workspace proxies are a Premium feature.
@@ -255,7 +255,7 @@ To improve latency and user experience:
 
 For help troubleshooting connection issues, including latency problems, refer to the [networking troubleshooting guide](./troubleshooting.md).
 
-## External Network Access
+## External network access
 
 By default, Coder will access some external network endpoints in order to download dependencies and send usage data. However, all of these features can be disabled. Learn how to configure Coder for [air-gapped environments](../../install/airgap.md).
 

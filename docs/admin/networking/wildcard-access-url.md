@@ -29,17 +29,14 @@ export CODER_WILDCARD_ACCESS_URL="*.coder.example.com"
 coder server
 ```
 
-### TLS Certificate Setup
+### TLS certificate setup
 
 Wildcard access URLs require a TLS certificate that covers the wildcard domain. You have several options:
 
 > [!TIP]
 > You can use a single certificate for both the access URL and wildcard access URL. The certificate CN or SANs must match the wildcard domain, such as `*.coder.example.com`.
 
-> [!NOTE]
-> For air-gapped deployments, the [Let's Encrypt reverse proxy option](#reverse-proxy-with-lets-encrypt) below requires outbound internet access and isn't available. Use [Direct TLS Configuration](#direct-tls-configuration) with a certificate issued by your internal CA instead. See [Air-gapped Deployments](../../install/airgap.md).
-
-#### Direct TLS Configuration
+#### Direct TLS configuration
 
 Configure Coder to handle TLS directly using the wildcard certificate:
 
@@ -51,7 +48,13 @@ export CODER_TLS_KEY_FILE=/path/to/wildcard.key
 
 See [TLS & Reverse Proxy](../setup/index.md#tls--reverse-proxy) for detailed configuration options.
 
-#### Reverse Proxy with Let's Encrypt
+#### Reverse proxy with Let's Encrypt
+
+> [!NOTE]
+> This option requires outbound internet access, so it isn't available for
+> air-gapped deployments. Use [Direct TLS configuration](#direct-tls-configuration)
+> with a certificate issued by your internal CA instead. See
+> [Air-gapped deployments](../../install/airgap.md).
 
 Use a reverse proxy to handle TLS termination with automatic certificate management:
 
@@ -65,7 +68,7 @@ host in `X-Forwarded-Host`, configure
 to trust that proxy's address. Otherwise Coder will ignore `X-Forwarded-Host`
 for subdomain app routing.
 
-### DNS Setup
+### DNS setup
 
 You'll need to configure DNS to point wildcard subdomains to your Coder server:
 
@@ -85,7 +88,7 @@ Or alternatively, using a CNAME record:
 *.coder.example.com    CNAME    coder.example.com
 ```
 
-### Workspace Proxies
+### Workspace proxies
 
 If you're using [workspace proxies](workspace-proxies.md) for geo-distributed teams, each proxy requires its own wildcard access URL configuration:
 
@@ -107,7 +110,7 @@ Each proxy's wildcard domain must have corresponding DNS records:
 *.london.coder.example.com    A    <london-proxy-ip>
 ```
 
-## Template Configuration
+## Template configuration
 
 In your Coder templates, enable subdomain applications using the `subdomain` parameter:
 
