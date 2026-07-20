@@ -2,11 +2,10 @@
 
 This page explains how Coder Connect, the VPN-based tunnel behind
 [Coder Desktop](../../user-guides/desktop/index.md), fits into Coder's
-networking model. For installation, end-user setup, and troubleshooting,
-see [Coder Desktop](../../user-guides/desktop/index.md) and
+networking model, so you can account for it in DNS, firewall, and
+endpoint-security policy. For installation, end-user setup, and
+troubleshooting, see [Coder Desktop](../../user-guides/desktop/index.md) and
 [Coder Desktop Connect and Sync](../../user-guides/desktop/desktop-connect-sync.md).
-
-Coder Connect is currently available for macOS and Windows.
 
 ## How it fits into the networking stack
 
@@ -14,16 +13,20 @@ Coder Connect doesn't introduce a separate networking system: it uses the
 same [WireGuard tunnel, coordinator, STUN, and DERP fallback](./establishing-connections.md)
 as the CLI and IDE extensions. The difference is where that tunnel lives.
 Instead of a per-process connection scoped to a single `coder` CLI
-invocation, Coder Connect installs a system-wide VPN network extension (via
-a TUN interface) that stays connected to all of your workspaces at once,
-so any application on your machine, an SSH client, a browser, an IDE, can
-reach a workspace by hostname without going through the `coder` CLI first.
+invocation, Coder Desktop installs a system-wide VPN network extension
+(via a TUN interface), and enabling Coder Connect keeps it connected to
+all of your workspaces at once, so any application on your machine, an
+SSH client, a browser, an IDE, can reach a workspace by hostname without
+going through the `coder` CLI first.
 
 Because it shares the same underlying tailnet connection, the same
-direct-versus-relayed logic applies: Coder Connect attempts a direct
-connection to each workspace agent and falls back to DERP (through coderd
-or the nearest [workspace proxy](./workspace-proxies.md)) when a direct
-path isn't available.
+[direct-connection](./establishing-connections.md#establishing-a-direct-connection)
+and
+[relayed-fallback](./establishing-connections.md#falling-back-to-a-relayed-connection)
+logic applies: Coder Connect attempts a direct connection to each
+workspace agent and falls back to DERP (through coderd or the nearest
+[workspace proxy](./workspace-proxies.md)) when a direct path isn't
+available.
 
 The VPN extension only routes traffic destined for Coder workspaces; all
 other network traffic on your machine is unaffected.
