@@ -193,7 +193,7 @@ Change the provided
 file to include a custom entrypoint:
 
 ```diff
-  image: ghcr.io/coder/coder:${CODER_VERSION:-latest}
+  image: ${CODER_REPO:-ghcr.io/coder/coder}:${CODER_VERSION:-latest}
 + entrypoint: /opt/coder wsproxy server
 ```
 
