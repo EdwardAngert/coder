@@ -183,6 +183,13 @@ This also enables using [Coder registry](https://registry.coder.com) modules
 that depend on these resources inside dev containers, by passing the
 `subagent_id` as the module's `agent_id`.
 
+> [!NOTE]
+> A dev container's sub-agent is a separate Coder agent process with its
+> own connection to coderd, not a proxy through the parent workspace agent.
+> It establishes and authenticates its own connection the same way any
+> other agent does; see
+> [Establishing Connections](../../networking/establishing-connections.md).
+
 ### Terraform-managed dev containers
 
 When a `coder_devcontainer` has any `coder_app`, `coder_script`, or `coder_env`

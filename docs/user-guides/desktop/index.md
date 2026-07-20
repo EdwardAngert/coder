@@ -257,3 +257,4 @@ If you encounter issues not covered here:
 
 - [Using Coder Connect and File Sync](./desktop-connect-sync.md)
 - [Compare port forwarding methods](../workspace-access/port-forwarding.md)
+- [How Coder Connect fits into Coder's networking model](../../admin/networking/coder-connect.md) (for administrators)

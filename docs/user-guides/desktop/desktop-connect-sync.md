@@ -9,6 +9,11 @@ Use Coder Desktop to work on your workspaces and files as though they're on your
 
 While active, Coder Connect will list the workspaces you own and will configure your system to connect to them over private IPv6 addresses and custom hostnames ending in `.coder`.
 
+> [!NOTE]
+> For how this tunnel, its DNS resolution, and its IPv6 addressing fit into
+> Coder's broader networking model, see
+> [Coder Connect](../../admin/networking/coder-connect.md).
+
 ![Coder Desktop list of workspaces](../../images/user-guides/desktop/coder-desktop-workspaces.png)
 
 To copy the `.coder` hostname of a workspace agent, select the copy icon beside it.

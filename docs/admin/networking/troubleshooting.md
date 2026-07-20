@@ -1,5 +1,9 @@
 # Troubleshooting
 
+> [!NOTE]
+> For an overview of how direct and relayed connections are established, see
+> [Establishing Connections](./establishing-connections.md).
+
 `coder ping <workspace>` will ping the workspace agent and print diagnostics on
 the state of the connection. These diagnostics are created by inspecting both
 the client and agent network configurations, and provide insights into why a
@@ -29,16 +33,16 @@ Possible agent-side issues with direct connection:
  - Agent IP address is within an AWS range (AWS uses hard NAT)
 ```
 
-## Common Problems with Direct Connections
+## Common problems with direct connections
 
-### Disabled Deployment-wide
+### Disabled deployment-wide
 
 Direct connections can be disabled at the deployment level by setting the
 `CODER_BLOCK_DIRECT` environment variable or the `--block-direct-connections`
 flag on the server. When set, this will be reflected in the output of
 `coder ping`.
 
-### UDP Blocked
+### UDP blocked
 
 Some corporate firewalls block UDP traffic. Direct connections require UDP
 traffic to be allowed between the client and agent, as well as between the
@@ -49,7 +53,7 @@ STUN servers.
 If this is the case, you may need to add exceptions to the firewall to allow UDP
 for Coder workspaces, clients, and STUN servers.
 
-### Endpoint-Dependent NAT (Hard NAT)
+### Endpoint-dependent NAT (hard NAT)
 
 Hard NATs prevent public endpoints gathered from STUN servers from being used by
 the peer to establish a direct connection. Typically, if only one side of the
@@ -62,7 +66,7 @@ NAT.
 
 Learn more about [STUN and NAT](./stun.md).
 
-### No STUN Servers
+### No STUN servers
 
 If there are no STUN servers available within a deployment's DERP MAP, direct
 connections may not be possible. Notable exceptions are if the client and agent
@@ -70,7 +74,7 @@ are on the same network, or if either is able to use UPnP instead of STUN to
 resolve the public IP of the other. `coder ping` will indicate if no STUN
 servers were found.
 
-### Endpoint Firewalls
+### Endpoint firewalls
 
 Direct connections may also be impeded if one side is behind a hard NAT and the
 other is running a firewall that blocks ingress traffic from unknown 5-tuples
@@ -115,6 +119,21 @@ will not be affected by the low MTU.
 To disable direct connections, set the
 [`--block-direct-connections`](../../reference/cli/server.md#--block-direct-connections)
 flag or `CODER_BLOCK_DIRECT` environment variable on the Coder server.
+
+## Common problems with relayed connections
+
+If a connection stays relayed but is slow, failing, or `coder ping` reports
+no DERP region at all, the problem is usually with the DERP server itself
+rather than the individual connection. Check the
+[DERP section of the health check](../monitoring/health-check.md#derp) for
+deployment-wide diagnostics, including load balancers that strip the
+`Upgrade: derp` header, unhealthy DERP nodes, and deployments with no DERP
+servers configured.
+
+## Connection auditing
+
+To see who connected to a workspace, when, and how (SSH, workspace apps,
+port forwarding), see [Connection Logs](../monitoring/connection-logs.md).
 
 ## Throughput
 

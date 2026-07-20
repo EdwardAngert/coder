@@ -1,14 +1,14 @@
 # Networking
 
-Coder's network topology has three types of nodes: workspaces, coder servers,
+Coder's network topology has three types of nodes: workspaces, Coder servers,
 and users.
 
-The coder server must have an inbound address reachable by users and workspaces,
+The Coder server must have an inbound address reachable by users and workspaces,
 but otherwise, all topologies _just work_ with Coder.
 
 When possible, we establish direct connections between users and workspaces.
 Direct connections are as fast as connecting to the workspace outside of Coder.
-When NAT traversal fails, connections are relayed through the coder server. All
+When NAT traversal fails, connections are relayed through the Coder server. All
 user-workspace connections are end-to-end encrypted.
 
 [Tailscale's open source](https://tailscale.com) backs our websocket/HTTPS
@@ -16,7 +16,9 @@ networking logic.
 
 ## Requirements
 
-In order for clients and workspaces to be able to connect:
+For a complete port-by-port table of what each component needs, see
+[Network Requirements](./requirements.md). In order for clients and
+workspaces to be able to connect:
 
 > [!NOTE]
 > We strongly recommend that clients connect to Coder and their
@@ -67,14 +69,14 @@ In order for clients to be able to establish direct connections:
     ephemeral (high) ports. If a firewall between the client and the agent
     blocks this UDP traffic, direct connections will not be possible.
 
-## coder server
+## Coder server
 
-Workspaces connect to the coder server via the server's external address, set
+Workspaces connect to the Coder server via the server's external address, set
 via [`ACCESS_URL`](../../admin/setup/index.md#access-url). There must not be a
-NAT between workspaces and coder server.
+NAT between workspaces and the Coder server.
 
-Users connect to the coder server's dashboard and API through its `ACCESS_URL`
-as well. There must not be a NAT between users and the coder server.
+Users connect to the Coder server's dashboard and API through its `ACCESS_URL`
+as well. There must not be a NAT between users and the Coder server.
 
 Template admins can overwrite the site-wide access URL at the template level by
 leveraging the `url` argument when
@@ -89,16 +91,16 @@ provider "coder" {
 This is useful when debugging connectivity issues between the workspace agent
 and the Coder server.
 
-## Web Apps
+## Web apps
 
-The coder servers relays dashboard-initiated connections between the user and
+The Coder server relays dashboard-initiated connections between the user and
 the workspace. Web terminal <-> workspace connections are an exception and may
 be direct.
 
 In general, [port forwarded](./port-forwarding.md) web apps are faster than
 dashboard-accessed web apps.
 
-## 🌎 Geo-distribution
+## Geo-distribution
 
 ### Direct connections
 
@@ -130,7 +132,7 @@ You can launch `coder server` with Tailscale's DERPs like so:
 coder server --derp-config-url https://controlplane.tailscale.com/derpmap/default
 ```
 
-#### Custom Relays
+#### Custom relays
 
 If you want lower latency than what Tailscale offers or want additional DERP
 relays for air-gapped deployments, you may run custom DERP servers. Refer to
@@ -166,7 +168,7 @@ coder server --derp-config-path derpmap.json
 ### Dashboard connections
 
 The dashboard (and web apps opened through the dashboard) are served from the
-coder server, so they can only be geo-distributed with High Availability mode in
+Coder server, so they can only be geo-distributed with High Availability mode in
 our Premium Edition. [Reach out to Sales](https://coder.com/contact) to learn
 more.
 
@@ -184,7 +186,7 @@ With browser-only connections, developers can only connect to their workspaces
 via the web terminal and
 [web IDEs](../../user-guides/workspace-access/web-ides.md).
 
-### Workspace Proxies
+### Workspace proxies
 
 > [!NOTE]
 > Workspace proxies are a Premium feature.
@@ -253,11 +255,14 @@ To improve latency and user experience:
 
 For help troubleshooting connection issues, including latency problems, refer to the [networking troubleshooting guide](./troubleshooting.md).
 
-## External Network Access
+## External network access
 
 By default, Coder will access some external network endpoints in order to download dependencies and send usage data. However, all of these features can be disabled. Learn how to configure Coder for [air-gapped environments](../../install/airgap.md).
 
 ## Up next
 
+- Learn about [Network Requirements](./requirements.md)
+- Learn about [Establishing Connections](./establishing-connections.md)
+- Learn about [Coder Connect](./coder-connect.md)
 - Learn about [Port Forwarding](./port-forwarding.md)
 - Troubleshoot [Networking Issues](./troubleshooting.md)
